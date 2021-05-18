@@ -1,5 +1,9 @@
 import numpy as np
 from templado import *
+from colina import *
+
+letras = ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
+    
 problema = {'A': ['B', 'C', 'D'],
             'B': ['A', 'C', 'E', 'F'],
             'C': ['A', 'B', 'F', 'G', 'D'],
@@ -30,14 +34,20 @@ utilidad = {'A': 25,
             'M': 3,
             'N': 12}
 
-
 def estado_inicial():
     num = np.random.randint(13)
     return letras[num]
 
-letras = ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
-est_init = estado_inicial()
+def main():
 
-print(est_init)
-mejor = templado(est_init, problema, utilidad)
-print ('La mejor solucion encontrada fue '+ mejor )
+    est_init = estado_inicial()
+
+    print('El estado inicial es: ', est_init)
+    mejor = templado(est_init, problema, utilidad)
+    print ('\nTemplado da como resultado '+ mejor + ' como la mejor solucion, con un valor util de ', utilidad[mejor])
+    
+    solucion = asender_colina(est_init ,problema , utilidad)
+    print ('\nColina da como resultado '+ solucion + ' como la mejor solucion, con un valor util de ', utilidad[solucion])
+    pass
+
+main()

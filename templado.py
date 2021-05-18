@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def getVecindad(estado, diagrama):
     return diagrama[estado]
 
@@ -14,6 +15,7 @@ def siguiente(vecindad, utilidad):
     return mejor
 
 def templado(inicial, pro, uti):
+    iteracion = 1
     problema = pro
     utilidad = uti
     mejor = inicial
@@ -22,10 +24,9 @@ def templado(inicial, pro, uti):
     temperatura = 25
 
     while temperatura > 0.25:
+        print("Iteracion numero ", iteracion)
         vecindad = getVecindad(actual, problema)
         nuevo = siguiente(vecindad, utilidad)
-        iteracion = 0
-        print(actual, utilidad[actual], mejor, utilidad[mejor], iteracion)
         
         if utilidad[nuevo] >= utilidad[mejor]:
             mejor = nuevo
@@ -37,11 +38,9 @@ def templado(inicial, pro, uti):
                 mejor = nuevo
         actual = nuevo
         temperatura = temperatura*0.5
-        print(actual, utilidad[actual], mejor, utilidad[mejor])
-        
-        iteracion = iteracion + 1
+        print('El mejor es: ',mejor, 'con un valor util de ', utilidad[mejor])
+        iteracion= iteracion + 1
+
     return mejor
-
-
 
 

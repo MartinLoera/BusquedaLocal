@@ -1,6 +1,8 @@
 import numpy as np
 from templado import *
 from colina import *
+from genetico import *
+import time
 
 letras = ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
     
@@ -43,11 +45,21 @@ def main():
     est_init = estado_inicial()
 
     print('El estado inicial es: ', est_init)
-    mejor = templado(est_init, problema, utilidad)
-    print ('\nTemplado da como resultado '+ mejor + ' como la mejor solucion, con un valor util de ', utilidad[mejor])
-    
-    solucion = asender_colina(est_init ,problema , utilidad)
-    print ('\nColina da como resultado '+ solucion + ' como la mejor solucion, con un valor util de ', utilidad[solucion])
+    time.sleep(2)
+    print('-----------------------------------------------------------------------------')
+    mejor_templado = templado(est_init, problema, utilidad)
+    print ('\nTemplado da como resultado '+ mejor_templado + ' como la mejor solucion, con un valor util de ', utilidad[mejor_templado])
+    time.sleep(5)
+    print('-----------------------------------------------------------------------------')
+    solucion_colina = asender_colina(est_init ,problema , utilidad)
+    print ('\nColina da como resultado '+ solucion_colina + ' como la mejor solucion, con un valor util de ', utilidad[solucion_colina])
     pass
-
+    print('\n')
+    time.sleep(5)
+    print('-----------------------------------------------------------------------------')
+    solucion_AG = main_genetico(est_init)
+    
+    print ('\nAG da como resultado '+ solucion_AG + ' como la mejor solucion, con un valor util de ', utilidad[solucion_AG])
+    pass
+    
 main()

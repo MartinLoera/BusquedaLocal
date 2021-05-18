@@ -1,3 +1,5 @@
+import numpy as np
+from templado import *
 problema = {'A': ['B', 'C', 'D'],
             'B': ['A', 'C', 'E', 'F'],
             'C': ['A', 'B', 'F', 'G', 'D'],
@@ -27,3 +29,15 @@ utilidad = {'A': 25,
             'L': 25,
             'M': 3,
             'N': 12}
+
+
+def estado_inicial():
+    num = np.random.randint(13)
+    return letras[num]
+
+letras = ['A', 'B', 'C', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
+est_init = estado_inicial()
+
+print(est_init)
+mejor = templado(est_init, problema, utilidad)
+print ('La mejor solucion encontrada fue '+ mejor )
